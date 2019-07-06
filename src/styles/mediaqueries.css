@@ -1,0 +1,12 @@
+@media only screen and (max-width : 990px) {
+  ._appName{
+    left:50%;
+  }
+}
+
+
+@media only screen and (max-width : 656px) {
+  ._appName{
+    left:20%;
+  }
+}
