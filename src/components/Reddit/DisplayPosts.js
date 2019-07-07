@@ -1,6 +1,16 @@
 import React, { Component } from 'react';
 import Posts from './Posts'
 
+/**
+@component DisplayPosts
+This component is responsible rendering the unordered list of subreddits
+  - Can be used to prepare the individual content for UL
+    before rendering them individually
+  @renders
+    - Unordered List of Posts
+    - Anchor link to redirect user to individual post context
+**/
+
 class DisplayPosts extends Component {
 
   renderPosts = subRedditPosts => {
@@ -21,7 +31,7 @@ class DisplayPosts extends Component {
 
 
   render() {
-    const { subRedditPosts, isFetching } = this.props;
+    const { subRedditPosts } = this.props;
     return (
       <div className="_postParent">
         <ul>

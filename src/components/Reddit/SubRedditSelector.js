@@ -1,10 +1,12 @@
-/*
-VO
-This component is for the drop-down that would have the subreddits
-*/
-
 import React, { Component } from 'react';
 import { Select } from 'semantic-ui-react'
+
+/**
+@component SubRedditSelector
+This component is responsible for Select dropdown containing subreddit options
+  @renders
+    - Select dropdown
+**/
 
 class SubRedditSelector extends Component {
 

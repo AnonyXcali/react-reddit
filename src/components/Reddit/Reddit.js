@@ -7,17 +7,24 @@ import { connect } from 'react-redux'
 import { Sticky, Ref, Icon } from 'semantic-ui-react'
 import { Loader } from 'semantic-ui-react'
 
-
+/**
+@component Reddit
+  @renders
+    - @childComponent SubRedditSelector
+    - @childComponent DisplayPosts
+**/
 
 class Reddit extends Component {
 
   /**
-  TODO : Explain
+  For the sticky component as Refs provide a way to access DOM nodes or React elements created in the render method.
   **/
   contextRef = createRef()
 
   /**
-  TODO : Explain
+  function selectedSubreddit
+  @param subreddit
+  Dispatches the selected subreddit to fetch subreddit posts.
   **/
   subRedditSelected = (subreddit) => {
     this.props.dispatch(selectSubreddit(subreddit))
@@ -64,7 +71,7 @@ class Reddit extends Component {
   }
 }
 
-const mapStateToProps = state =>{
+const mapStateToProps = state => {
     const { selectedSubreddit , postsBySubreddit } = state
     const {
         isFetching,

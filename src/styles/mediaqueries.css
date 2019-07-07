@@ -2,11 +2,39 @@
   ._appName{
     left:50%;
   }
+  ._posts{
+    width: 90%;
+  }
+  ._post{
+    width:350px;
+    position: relative;
+    right:10%;
+  }
+  ._flair{
+    font-size:8px !important;
+    padding-top: 2px;
+    text-overflow: ellipsis;
+  }
+  ._author{
+    font-size:8px !important;
+    padding-top: 2px;
+  }
+  ._postedAgo{
+    font-size:8px !important;
+  }
+
 }
 
 
 @media only screen and (max-width : 656px) {
   ._appName{
+    left:20%;
+  }
+}
+
+@media only screen and (max-width : 430px) {
+  ._appName{
+    font-size:10px;
     left:20%;
   }
 }

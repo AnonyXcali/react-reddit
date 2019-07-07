@@ -1,9 +1,9 @@
 pre{
   font-family: inherit !important;
-  white-space: pre-wrap;       /* css-3 */
-  white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
-  white-space: -pre-wrap;      /* Opera 4-6 */
-  white-space: -o-pre-wrap;    /* Opera 7 */
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
   word-wrap: break-word;
 }
 
@@ -60,15 +60,20 @@ pre{
 
 ._postCard ._authorAttr
 {
-  font-size: 1rem !important;
+  font-size: 0.9rem;
+}
+
+._author{
+  margin-right:5px;
 }
 
 ._authorAttr, ._headerAttr{
   display: flex;
   margin-bottom: 5px;
+  align-items: baseline;
 }
 ._flair{
-  margin-left:5px;
+  margin-right:5px;
   background: #EDEFF1;
   padding:0 4px;
   color:black !important;
@@ -92,10 +97,11 @@ pre{
 }
 
 .link_flair{
-  ont-weight: normal;
+    font-weight: normal;
     font-size: 10px;
     position: relative;
     top: -2px;
+    left: 4px;
 }
 
 ._textContent{
@@ -137,4 +143,8 @@ pre{
 
 ._semiPostContent{
   color:grey;
+}
+
+._postedAgo{
+  font-size:10px !important;
 }

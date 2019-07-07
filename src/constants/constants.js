@@ -1,5 +1,5 @@
 /*
-  Update this file to add new subreddits.
+  Update variables which are constant over the entire application
 */
 
 

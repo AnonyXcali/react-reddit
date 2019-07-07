@@ -2,7 +2,10 @@ import { combineReducers } from 'redux'
 import { SELECT_SUBREDDIT, REQUEST_SUB_REDDIT_POSTS, RECEIVE_POSTS } from '../actions/actions'
 
 /**
-TODO : Explain
+func selectedSubreddit
+  @param state
+  @param action
+ returns selectedReddit or default state
 **/
 
 const selectedSubreddit = (state = 'Search for a Sub Reddit...', action) => {
@@ -13,6 +16,13 @@ const selectedSubreddit = (state = 'Search for a Sub Reddit...', action) => {
             return state
     }
 }
+
+/**
+func selectedSubreddit
+  @param state
+  @param action
+ returns isFetching {boolean} & {posts}
+**/
 
 const posts = (state = {
                    isFetching: false,
@@ -33,6 +43,14 @@ const posts = (state = {
     }
 }
 
+/**
+func selectedSubreddit
+  @param state
+  @param action
+  returns {Object} containing respective action based state changes or default
+  state
+**/
+
 const postsBySubreddit = (state = { }, action) => {
     switch (action.type) {
         case RECEIVE_POSTS:
@@ -46,6 +64,10 @@ const postsBySubreddit = (state = { }, action) => {
 }
 
 
+/**
+func reduceToGlobalStore
+  combine multiple reducers to one [GLOBAL STATE]
+**/
 
 const reduceToGlobalStore = combineReducers({
   selectedSubreddit,
