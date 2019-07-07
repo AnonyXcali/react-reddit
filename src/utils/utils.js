@@ -35,13 +35,24 @@ function _isValidURL
 Returns boolean if param is a valid url.
 **/
 export function _isValidURL(str){
-  var pattern = new RegExp('^(https?:\\/\\/)?'+
+  let pattern = new RegExp('^(https?:\\/\\/)?'+
       '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'+
       '((\\d{1,3}\\.){3}\\d{1,3}))'+
       '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+
       '(\\?[;&a-z\\d%_.~+=-]*)?'+
       '(\\#[-a-z\\d_]*)?$','i');
   return !!pattern.test(str);
+}
+
+/**
+function _isImage
+@params str
+@returns boolean
+Returns boolean if param is a valid image extension.
+**/
+export function _isImage(str){
+  let imageReg = RegExp(/[\/.](gif|jpg|jpeg|tiff|png)$/,'i');
+  return imageReg.test(str);
 }
 
 

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Card, Icon, Image  } from 'semantic-ui-react'
 import ReactPlayer from 'react-player'
-import { _postedAgo, _isValidURL, _decodeHtml } from '../../utils/utils'
+import { _postedAgo, _isValidURL, _decodeHtml, _isImage } from '../../utils/utils'
 
 /**
 @component Posts
@@ -25,9 +25,10 @@ class Posts extends Component {
   @returns string
   Returns image url for display
   **/
-  _decodeImageUrl = url => {
-    if(url){
-      return url.images[0].resolutions[url.images[0].resolutions.length-1].url.replace(/&amp;/g, "&");
+  _decodeImageUrl = (post) => {
+    if(_isImage(post.url)) return post.url;
+    if(post.preview){
+      return post.preview.images[0].resolutions[post.preview.images[0].resolutions.length-1].url.replace(/&amp;/g, "&");
     }
   }
 
@@ -37,8 +38,9 @@ class Posts extends Component {
   @returns string
   Return url for video links
   **/
-  _getCorrectMedia = media => {
-    let urlArr = media.oembed.html.split('"');
+  _getCorrectMedia = post => {
+    if(post.subreddit === 'gifs') return post.preview.reddit_video_preview.fallback_url.replace(/&amp;/g, "&");
+    let urlArr = post.media.oembed.html.split('"');
     for(let i = 0; i< urlArr.length; i++){
       if(_isValidURL(urlArr[i])){
         return urlArr[i].replace(/&amp;/g, "&");
@@ -73,13 +75,14 @@ class Posts extends Component {
             </Card.Header>
             <div className='_subRedditContent'>
               { post.media && post.media.type ?
-                (<ReactPlayer url={this._getCorrectMedia(post.media)} controls={true} width='100%'
+                (<ReactPlayer url={this._getCorrectMedia(post)} controls={true} width='100%'
           height='500px'/>)
               :
               (post.is_video ?
                 (<ReactPlayer url={post.media.reddit_video.fallback_url} controls={true}  width='100%'/>)
-                :  (post.thumbnail && post.thumbnail !== 'self' && post.thumbnail !== 'default' ?
-                <Image className='_postThumbnail' src={this._decodeImageUrl(post.preview)} wrapped ui={true}/>
+                :  ((post.thumbnail && post.thumbnail !== 'self' && post.thumbnail !== 'default')
+                || post.subreddit === 'hmmm' ?
+                <Image className='_postThumbnail' src={this._decodeImageUrl(post)} wrapped ui={true}/>
                 : (<div className="_textContent">
                     <pre>
                     <span className='_semiPostContent'>
