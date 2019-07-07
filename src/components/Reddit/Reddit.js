@@ -4,7 +4,7 @@ import SubRedditSelector from './SubRedditSelector'
 import DisplayPosts from './DisplayPosts'
 import { selectSubreddit, fetchPosts } from '../../actions/actions'
 import { connect } from 'react-redux'
-import { Sticky, Ref, Icon } from 'semantic-ui-react'
+import { Sticky, Icon } from 'semantic-ui-react'
 import { Loader } from 'semantic-ui-react'
 
 /**
@@ -61,8 +61,8 @@ class Reddit extends Component {
         {posts.length > 0 &&
           <div className='_posts'>
             <DisplayPosts
-              subRedditPosts = {posts}
-              isFetching = {isFetching}
+              subRedditPosts={posts}
+              isFetching={isFetching}
               />
           </div>
         }

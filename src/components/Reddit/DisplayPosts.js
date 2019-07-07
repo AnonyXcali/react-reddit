@@ -18,10 +18,10 @@ class DisplayPosts extends Component {
       return(
         <li
           className='_post'
-          key = {'_rdt'+'_'+iter}>
+          key={iter}>
           <a className='_cardAnchor' href={post.url} target={'_blank'}>
           <Posts
-            post = {post}
+            post={post}
           />
           </a>
         </li>

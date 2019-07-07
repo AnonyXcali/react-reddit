@@ -39,7 +39,6 @@ class Posts extends Component {
   **/
   _getCorrectMedia = media => {
     let urlArr = media.oembed.html.split('"');
-    let validUrl = '';
     for(let i = 0; i< urlArr.length; i++){
       if(_isValidURL(urlArr[i])){
         return urlArr[i].replace(/&amp;/g, "&");
@@ -49,7 +48,6 @@ class Posts extends Component {
 
   render() {
     const { post } = this.props;
-    const nullImages = ['self', 'default'];
     return (
       <Card className='_postCard'>
         <Card.Content>
@@ -79,9 +77,8 @@ class Posts extends Component {
           height='500px'/>)
               :
               (post.is_video ?
-                (<ReactPlayer url={post.media.reddit_video.fallback_url} controls={true}  width='100%'
-          height='100%'/>)
-                :  (post.thumbnail && post.thumbnail != 'self' && post.thumbnail != 'default' ?
+                (<ReactPlayer url={post.media.reddit_video.fallback_url} controls={true}  width='100%'/>)
+                :  (post.thumbnail && post.thumbnail !== 'self' && post.thumbnail !== 'default' ?
                 <Image className='_postThumbnail' src={this._decodeImageUrl(post.preview)} wrapped ui={true}/>
                 : (<div className="_textContent">
                     <pre>
