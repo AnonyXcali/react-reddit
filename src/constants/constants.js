@@ -18,9 +18,7 @@ const options = [
   { key: 'aa', text: 'adviceanimals', value: 'adviceanimals' },
   { key: 'hm', text: 'hmmm', value: 'hmmm' },
   { key: 'al', text: 'all', value: 'all' },
-  { key: 'aw', text: 'aww', value: 'aww' },
-  { key: 'mm', text: 'MMA', value: 'MMA' }
-
+  { key: 'aw', text: 'aww', value: 'aww' }
 ]
 
 
