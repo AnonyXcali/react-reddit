@@ -39,7 +39,8 @@ class Posts extends Component {
   Return url for video links
   **/
   _getCorrectMedia = post => {
-    if(post.subreddit === 'gifs') return post.preview.reddit_video_preview.fallback_url.replace(/&amp;/g, "&");
+    if(post.subreddit === 'gifs' || post.domain === 'gfycat.com')
+      return post.preview.reddit_video_preview.fallback_url.replace(/&amp;/g, "&");
     let urlArr = post.media.oembed.html.split('"');
     for(let i = 0; i< urlArr.length; i++){
       if(_isValidURL(urlArr[i])){
