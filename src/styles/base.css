@@ -146,5 +146,9 @@ pre{
 }
 
 ._postedAgo{
-  font-size:10px !important;
+  font-size:12px !important;
+}
+
+._Platinum,._Gold,._Silver{
+  margin-left:5px;
 }

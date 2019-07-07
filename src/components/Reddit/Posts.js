@@ -19,6 +19,11 @@ This component is responsible for individual posts.
 
 class Posts extends Component {
 
+  shouldComponentUpdate = (nextProps, nextState) => {
+       if (this.props.post === nextProps.post) return false;
+       return true;
+   }
+
   /**
   function _decodeImageUrl
   @params url
@@ -30,6 +35,18 @@ class Posts extends Component {
     if(post.preview){
       return post.preview.images[0].resolutions[post.preview.images[0].resolutions.length-1].url.replace(/&amp;/g, "&");
     }
+  }
+
+  _renderAwards = (awards, subreddit) => {
+    let awardsArr = awards.map((key, index) => {
+      return(
+        <Card.Meta key={Date.now()+index} className={'_award _'+key.name}>
+          <img alt={key.name} src={key.resized_icons[0].url}/>
+          <span>{key.count}</span>
+        </Card.Meta>
+      )
+    })
+    return awardsArr;
   }
 
   /**
@@ -71,6 +88,11 @@ class Posts extends Component {
               <Card.Meta className='_postedAgo'>
                 <p>{_postedAgo(post.created_utc)}</p>
               </Card.Meta>
+              {post.all_awardings.length > 0 &&
+                (this._renderAwards(post.all_awardings, post.subreddit).map(el => {
+                  return (el)
+                }))
+                }
             </div>
             <Card.Header>
               <span className='_postHeader'>{post.title}
